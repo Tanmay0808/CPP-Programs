@@ -31,7 +31,6 @@ class DoubleHashing
       }
       ~DoubleHashing(){delete []A;}
       void insertVal(int data);
-      int deleteVal(int data);
       void searchVal(int data);
       bool inkeylimit(){return n < 5 ? true : false;}
 };
