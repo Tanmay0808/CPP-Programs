@@ -14,6 +14,7 @@ class TreeNode{
         }
 };
 
+//Naive
 void inOrderTraversal(TreeNode *root, vector<TreeNode *> &list)
 {
     if (root!=NULL)
@@ -23,7 +24,6 @@ void inOrderTraversal(TreeNode *root, vector<TreeNode *> &list)
         inOrderTraversal(root->right, list);
     }
 }
-
 void printLL(TreeNode *root)
 {
     vector<TreeNode *> DLL;
@@ -48,6 +48,19 @@ void printLL(TreeNode *root)
     cout<<"NULL"<<endl;
 }
 
+//Optimal
+void inOrderOptimal(TreeNode *root, TreeNode *prev = NULL)
+{
+    if (root!=NULL)
+    {
+        inOrderOptimal(root->left,root);
+        if (prev != NULL)
+            prev->right = root;
+        root->left = prev;
+        inOrderOptimal(root->right,root);
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     TreeNode *root = new TreeNode(10);
@@ -56,6 +69,13 @@ int main(int argc, char const *argv[])
     root->right->left = new TreeNode(30);
     root->right->right = new TreeNode(35);
     cout<<"Doubly Linked List : - "<<endl;
-    printLL(root);
+    //printLL(root);
+
+    while(root!=NULL)
+    {
+        cout<<root->data<<" ";
+        root = root->right;
+    }
+    cout<<endl;
     return 0;
 }
