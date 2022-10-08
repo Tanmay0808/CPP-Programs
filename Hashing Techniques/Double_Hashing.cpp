@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
 
+// here is my contribution lord
+
 int h1(int x)
 {
    return x%10;
